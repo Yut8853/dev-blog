@@ -1,11 +1,31 @@
+# dependencies
 node_modules
+**/node_modules
+
+# next
 .next
-.turbo
+.next*
+**/.next
+**/.next*
+**/.turbo
+
+# build
 dist
 build
+out
 
+# test
+coverage
+playwright-report
+test-results
+
+# env
 .env
 .env.local
 .env.*.local
 
+# system
 .DS_Store
+
+# logs
+*.log

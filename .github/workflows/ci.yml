@@ -11,7 +11,7 @@ on:
 
 jobs:
   check:
-    name: Typecheck, Lint and Build
+    name: Typecheck, Lint, Test, Build and E2E
     runs-on: ubuntu-latest
 
     steps:
@@ -35,11 +35,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install Playwright browsers
+        run: pnpm --filter web exec playwright install --with-deps chromium
+
       - name: Type check
         run: pnpm typecheck
 
       - name: Lint
         run: pnpm lint
 
+      - name: Unit test
+        run: pnpm test
+
       - name: Build
         run: pnpm build
+
+      - name: E2E test
+        run: pnpm e2e
